@@ -1,10 +1,9 @@
 import fs from 'fs';
 import { scrapeProduct } from './src/services/scraper.js';
 
-// Coloque aqui a lista de links de hardware que você quer monitorar
+// Coloque aqui os links das peças de PC que você quer monitorar
 const urlsParaMonitorar = [
-  "https://www.kabum.com.br/produto/1063823/placa-de-video-pcyes-geforce-rtx4060-8gb-gddr6-128bits-pvr40608gr6df2",
-  
+  "https://www.kabum.com.br/produto/1008840/...",
   // Adicione mais links aqui
 ];
 
@@ -16,12 +15,16 @@ async function executarVarredura() {
     try {
       console.log(`Buscando: ${url}`);
       const dados = await scrapeProduct(url);
+      
+      // Ajustado para pegar o objeto 'data' ou direto dependendo de como o scraper retorna
       resultados.push({
-        url,
+        site: dados.site || "KaBuM!",
         nome: dados.name,
         preco: dados.price,
         precoRaw: dados.priceRaw,
-        atualizadoEm: new Date().toISOString()
+        image: dados.image || "", // Agora salvando a foto!
+        url: url,
+        atualizadoEm: dados.scrapedAt || new Date().toISOString()
       });
     } catch (error) {
       console.error(`Erro ao buscar ${url}:`, error.message);

@@ -4,6 +4,8 @@ import { scrapeProduct } from './src/services/scraper.js';
 // Coloque aqui a lista de links de hardware que você quer monitorar
 const urlsParaMonitorar = [
   "https://www.kabum.com.br/produto/exemplo-de-placa-de-video",
+  "https://www.kabum.com.br/produto/1063823/placa-de-video-pcyes-geforce-rtx4060-8gb-gddr6-128bits-pvr40608gr6df2"
+  
   // Adicione mais links aqui
 ];
 

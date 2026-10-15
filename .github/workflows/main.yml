@@ -1,0 +1,33 @@
+name: Agendador de Scraping
+
+on:
+  schedule:
+    # Roda a cada 3 horas (no formato Cron UTC)
+    - cron: '0 */3 * * *'
+  # Permite rodar manualmente no painel do GitHub
+  workflow_dispatch:
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar o código
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Instalar dependências
+        run: npm install
+
+      - name: Executar script de Scraping
+        run: node src/services/scraper.js
+
+      - name: Salvar alterações no repositório
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "bot: atualiza lista de promocoes [skip ci]"
+          file_pattern: "*.json"

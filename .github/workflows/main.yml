@@ -24,10 +24,10 @@ jobs:
         run: npm install
 
       - name: Executar script de Scraping
-        run: node src/services/scraper.js
+        run: node run-scrape.js
 
       - name: Salvar alterações no repositório
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "bot: atualiza lista de promocoes [skip ci]"
-          file_pattern: "*.json"
+          file_pattern: "produtos.json"

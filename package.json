@@ -1,0 +1,23 @@
+{
+  "name": "promocao-scraper",
+  "version": "1.0.0",
+  "description": "Web scraping de preços de hardware (Kabum, Pichau, Mercado Livre) com Axios + Cheerio",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "node --watch src/server.js",
+    "start": "node src/server.js"
+  },
+  "keywords": [
+    "scraper",
+    "axios",
+    "cheerio",
+    "express"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.7.9",
+    "cheerio": "^1.0.0",
+    "express": "^4.21.2"
+  }
+}
